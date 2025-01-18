@@ -2,6 +2,10 @@ const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
+    if (target.result.os.tag == .windows) {
+        std.log.err("\x1b[31mWindows Platform Not Supported\x1b[0m\n", .{});
+        std.process.exit(1);
+    }
     const optimize = b.standardOptimizeOption(.{});
 
     // lib
@@ -20,23 +24,11 @@ pub fn build(b: *std.Build) void {
     lib.root_module.addImport("hello", hello);
     b.installArtifact(lib);
 
-    // exe
-    const exe = b.addExecutable(.{
-        .name = "nop",
-        .root_source_file = b.path("src/nop.zig"),
-        .target = target,
-        .optimize = optimize,
-    });
-
-    b.installArtifact(exe);
-
-    const run_cmd = b.addRunArtifact(exe);
-    run_cmd.step.dependOn(b.getInstallStep());
-    if (b.args) |args| {
-        run_cmd.addArgs(args);
-    }
+    // define run step to print no operations as it is not set up
+    // there is no executable to run
     const run_step = b.step("run", "No operations (NOP)");
-    run_step.dependOn(&run_cmd.step);
+    const my_cmd = b.addSystemCommand(&[_][]const u8{ "echo", "\x1b[31mno operations\x1b[0m" });
+    run_step.dependOn(&my_cmd.step);
 
     // test
     const lib_unit_tests = b.addTest(.{
