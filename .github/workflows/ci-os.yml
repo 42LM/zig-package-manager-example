@@ -1,0 +1,33 @@
+name: CI-OS
+on:
+  # workflow_call is a required field of the "on" property,
+  # when intending to use the workflow as a reusable workflow
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+      zig-versions:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ${{inputs.os}}
+    strategy:
+      matrix:
+        zig: ${{fromJson(inputs.zig-versions)}}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Zig
+      uses: goto-bus-stop/setup-zig@v2
+      with:
+        version: ${{matrix.zig}}
+
+    - name: Build tests
+      run: zig build test
+
+    - name: Lint
+      run: zig fmt --check .
