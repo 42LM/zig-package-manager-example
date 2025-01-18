@@ -22,6 +22,9 @@ In your zig project folder (where `build.zig` is located), run:
 zig fetch --save "git+https://github.com/42LM/zig-package-manager-example"
 ```
 
+> [!TIP]
+> You can also fetch the lib/repo via tag/release. Check out the [v0.0.0 release](https://github.com/42LM/zig-package-manager-example/releases/tag/v0.0.0).
+
 Then, in your `build.zig`'s `build` function, add the following before
 `b.installArtifact(exe)`:
 
