@@ -8,8 +8,8 @@ This is a small and simple example/demonstration of the zig package manager aka 
 It provides an example on how to provide a zig ligrary and how to use it in a different project.
 
 > [!IMPORTANT]
-> 🛟 Does not work on zig versions below `< v0.11.0`!
-> ⚠️ Does not work on windows!
+> 🛟 Does **not work** on **zig versions below `< v0.11.0`**!  
+> ⚠️ Does **not work** on **windows**!
 
 > [!TIP]
 > If you are looking for minimal setup of a zig library please check out the [minimal](https://github.com/42LM/zig-package-manager-example/tree/minimal) branch.
