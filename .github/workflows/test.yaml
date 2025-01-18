@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        zig-version: [ '0.11', '0.12', '0.13', '0.14' ] # Replace with desired Zig versions
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Zig
+      uses: goto-bus-stop/setup-zig@v2
+      with:
+        zig-version: ${{ matrix.zig-version }}
+
+    - name: Build tests
+      run: zig build test
