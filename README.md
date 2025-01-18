@@ -1,11 +1,17 @@
+[![ubuntu-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml) [![macos-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml) [![windows-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/windows-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/windows-latest.yml)
+
+[![v0.12.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.12.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.12.0.yml) [![v0.13.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.13.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.13.0.yml) [![v0.14.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml)
+
 # zig-package-manager-example
 This is a small and simple example/demonstration of the zig package manager aka `zig.zon`.
 
 It provides an example on how to provide a zig ligrary and how to use it in a different project.
 
+> [!IMPORTANT]
+> 🛟 Does not work on zig versions below `< v0.11.0`!
+> ⚠️ Does not work on windows!
+
 > [!TIP]
-> The `main` branch provides some convenient features like a nop executable and tests. That way the `zig build run` and `zig build test` commands do not raise errors.
->
 > If you are looking for minimal setup of a zig library please check out the [minimal](https://github.com/42LM/zig-package-manager-example/tree/minimal) branch.
 
 ## Using it
@@ -51,7 +57,11 @@ Run the project:
 zig build run
 ```
 
+> Does not do much, only prints out `no operations`
+
 Run the tests:
 ```sh
 zig build test
 ```
+
+> Run the tests of the lib
