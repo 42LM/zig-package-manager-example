@@ -65,3 +65,10 @@ zig build test
 ```
 
 > Run the tests of the lib
+
+## Troubleshoot
+> [!WARNING]
+> Handle with care: Delete the cache of zig:
+> ```
+> rm -rf ~/.cache/zig
+> ```
