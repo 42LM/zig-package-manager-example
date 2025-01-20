@@ -8,7 +8,7 @@ This is a small and simple example/demonstration of the zig package manager aka 
 It provides an example on how to provide a zig ligrary and how to use it in a different project.
 
 > [!IMPORTANT]
-> 🛟 Does **not work** on **zig versions below `< v0.11.0`**!  
+> 🛟 Does **not work** on **zig versions below `< v0.12.0`**!  
 > ⚠️ Does **not work** on **windows**!
 
 > [!TIP]
