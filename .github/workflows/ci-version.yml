@@ -1,7 +1,5 @@
 name: CI-OS
 on:
-  # workflow_call is a required field of the "on" property,
-  # when intending to use the workflow as a reusable workflow
   workflow_call:
     inputs:
       os:
