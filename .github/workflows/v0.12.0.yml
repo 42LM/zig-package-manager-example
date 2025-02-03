@@ -5,5 +5,5 @@ jobs:
   v12-latest-build:
     uses: ./.github/workflows/ci-version.yml
     with:
-      os: '["ubuntu-latest", "macos-latest"]'
+      os: '["ubuntu-latest", "macos-latest", "windows-latest"]'
       zig-version: 0.12.0
