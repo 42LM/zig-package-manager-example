@@ -2,26 +2,25 @@ const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
-    if (target.result.os.tag == .windows) {
-        std.log.err("\x1b[31mWindows Platform Not Supported\x1b[0m\n", .{});
-        std.process.exit(1);
-    }
     const optimize = b.standardOptimizeOption(.{});
 
-    // lib
+    // Create the actual compiled library artifact.
+    // This is the binary that other projects will eventually link against.
+    // Zig fetch needs this to provide the compiled library to the other project.
     const lib = b.addStaticLibrary(.{
         .name = "hello",
         .root_source_file = b.path("src/hello.zig"), // ⚠ does not work with `lib/hello.zig`
         .target = target,
         .optimize = optimize,
     });
-    // const hello = b.addModule("hello", .{
-    //     .root_source_file = b.path("src/hello.zig"),
-    //     .target = target,
-    //     .optimize = optimize,
-    // });
-    //
-    // lib.root_module.addImport("hello", hello);
+    // Register the library as a module within the zig build system.
+    const hello = b.addModule("hello", .{
+        .root_source_file = b.path("src/hello.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    lib.root_module.addImport("hello", hello);
     b.installArtifact(lib);
 
     // define run step to print no operations as it is not set up
