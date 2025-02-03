@@ -1,6 +1,7 @@
 const std = @import("std");
 const testing = std.testing;
 
+/// world simply returns the string `hello world`.
 pub fn world() []const u8 {
     return "hello world";
 }
