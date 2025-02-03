@@ -23,13 +23,13 @@ pub fn build(b: *std.Build) void {
     lib.root_module.addImport("hello", hello);
     b.installArtifact(lib);
 
-    // define run step to print no operations as it is not set up
-    // there is no executable to run
+    // Define run step to print no operations as it is not set up.
+    // There is no executable to run.
     const run_step = b.step("run", "No operations (NOP)");
     const my_cmd = b.addSystemCommand(&[_][]const u8{ "echo", "\x1b[31mno operations\x1b[0m" });
     run_step.dependOn(&my_cmd.step);
 
-    // test
+    // Add tests.
     const lib_unit_tests = b.addTest(.{
         .root_source_file = b.path("src/hello.zig"),
         .target = target,
