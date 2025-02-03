@@ -15,13 +15,13 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    const hello = b.addModule("hello", .{
-        .root_source_file = b.path("src/hello.zig"),
-        .target = target,
-        .optimize = optimize,
-    });
-
-    lib.root_module.addImport("hello", hello);
+    // const hello = b.addModule("hello", .{
+    //     .root_source_file = b.path("src/hello.zig"),
+    //     .target = target,
+    //     .optimize = optimize,
+    // });
+    //
+    // lib.root_module.addImport("hello", hello);
     b.installArtifact(lib);
 
     // define run step to print no operations as it is not set up
