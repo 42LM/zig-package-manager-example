@@ -2,7 +2,7 @@ name: v0.15.0
 on: push
 
 jobs:
-  v14-latest-build:
+  v15-latest-build:
     uses: ./.github/workflows/ci-version.yml
     with:
       os: '[ "ubuntu-latest", "macos-latest" ]'
