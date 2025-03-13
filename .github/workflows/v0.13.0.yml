@@ -1,9 +1,0 @@
-name: v0.13.0
-on: push
-
-jobs:
-  v13-latest-build:
-    uses: ./.github/workflows/ci-version.yml
-    with:
-      os: '[ "ubuntu-latest", "macos-latest" ]'
-      zig-version: 0.13.0
