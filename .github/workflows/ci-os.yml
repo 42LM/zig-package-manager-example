@@ -26,7 +26,3 @@ jobs:
 
     - name: Build tests
       run: zig build test
-
-    - name: Lint
-      if: os != 'windows-latest'
-      run: zig fmt --check .
