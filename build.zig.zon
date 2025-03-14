@@ -1,6 +1,8 @@
 .{
-    .name = "hello",
+    .name = .zig_package_manager_example,
     .version = "0.0.0",
+    .fingerprint = 0xe970b9497d58666c,
+    .minimum_zig_version = "0.14.0",
     .paths = .{
         "build.zig",
         "build.zig.zon",

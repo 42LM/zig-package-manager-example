@@ -1,0 +1,28 @@
+name: CI-OS
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
+      zig-versions:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ${{inputs.os}}
+    strategy:
+      matrix:
+        zig: ${{fromJson(inputs.zig-versions)}}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Zig
+      uses: mlugg/setup-zig@v1
+      with:
+        version: ${{matrix.zig}}
+
+    - name: Build tests
+      run: zig build test
