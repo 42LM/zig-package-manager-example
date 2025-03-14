@@ -1,6 +1,6 @@
 [![ubuntu-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml) [![macos-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml) ![](https://img.shields.io/badge/windows%20latest-failing-D43645?logo=github&labelColor=3C454D&logoColor=949DA5)
 
-[![v0.12.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.12.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.12.0.yml) [![v0.13.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.13.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.13.0.yml) [![v0.14.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml)
+[![v0.14.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml) [![v0.15.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.15.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.15.0.yml)
 
 # zig-package-manager-example
 This is a small and simple example/demonstration of the zig package manager aka `zig.zon`.
@@ -8,8 +8,7 @@ This is a small and simple example/demonstration of the zig package manager aka 
 It provides an example on how to provide a zig ligrary and how to use it in a different project.
 
 > [!IMPORTANT]
-> 🛟 Does **not work** on **zig versions below `< v0.12.0`**!  
-> ⚠️ Does **not work** on **windows**!
+> 🛟 Does **not work** on **zig versions below `< v0.14.0`**!  
 
 > [!TIP]
 > If you are looking for minimal setup of a zig library please check out the [minimal](https://github.com/42LM/zig-package-manager-example/tree/minimal) branch.
