@@ -1,9 +1,0 @@
-name: v0.15.0
-on: push
-
-jobs:
-  v15-latest-build:
-    uses: ./.github/workflows/ci-version.yml
-    with:
-      os: '[ "ubuntu-latest", "macos-latest" ]'
-      zig-version: 0.15.0-dev.56+d0911786c

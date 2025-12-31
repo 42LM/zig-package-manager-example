@@ -1,9 +1,0 @@
-name: macos-latest
-on: push
-
-jobs:
-  macos-latest-build:
-    uses: ./.github/workflows/ci-os.yml
-    with:
-      os: macos-latest
-      zig-versions: '[ "0.14.0", "0.15.0-dev.56+d0911786c" ]'
