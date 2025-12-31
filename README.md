@@ -1,14 +1,14 @@
-[![ubuntu-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/ubuntu-latest.yml) [![macos-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/macos-latest.yml) [![windows-latest](https://github.com/42LM/zig-package-manager-example/actions/workflows/windows-latest.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/windows-latest.yml)
-
-[![v0.14.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.14.0.yml) [![v0.15.0](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.15.0.yml/badge.svg)](https://github.com/42LM/zig-package-manager-example/actions/workflows/v0.15.0.yml)
-
 # zig-package-manager-example
 This is a small and simple example/demonstration of the zig package manager aka `zig.zon`.
 
 It provides an example on how to provide a zig ligrary and how to use it in a different project.
 
 > [!IMPORTANT]
-> 🛟 Does **not work** on **zig versions below `< v0.14.0`**!  
+> 🚨 Does **not work** on **zig versions below `< v0.14.0`**!
+>
+> The example works on the current **zig version** `0.16.0-dev.1859+212968c57`.
+>
+> If you search for examples for older zig versions check out the older releases/tags. The releases/tags in this repo are sorted by zig version.
 
 > [!TIP]
 > If you are looking for minimal setup of a zig library please check out the [minimal](https://github.com/42LM/zig-package-manager-example/tree/minimal) branch.
@@ -34,11 +34,26 @@ Then, in your `build.zig`'s `build` function, add the following before
 `b.installArtifact(exe)`:
 
 ```zig
-    const hello = b.dependency("hello", .{
+    const hello = b.dependency("zig_package_manager_example", .{
         .target = target,
         .optimize = optimize,
     });
-    exe.root_module.addImport("hello", hello.module("hello"));
+```
+
+Add the module as import:
+```zig
+    const exe = b.addExecutable(.{
+        .name = "foo",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/main.zig"),
+            .target = target,
+            .optimize = optimize,
+            .imports = &.{
+                .{ .name = "foo", .module = mod },
+                .{ .name = "hello", .module = hello.module("hello") }, // <<<
+            },
+        }),
+    });
 ```
 
 In your projects `main.zig` file import the hello module:
@@ -50,6 +65,25 @@ pub fn main() !void {
     std.debug.print("{s}\n", .{hello.world()});
 }
 ```
+
+> [!NOTE]
+> Add the module as import to your lib:
+> ```zig
+>     const root = b.addModule("root", .{
+>         .root_source_file = b.path("src/root.zig"),
+>         .target = target,
+>         .optimize = optimize,
+>         .imports = &.{
+>             .{ .name = "hello", .module = hello.module("hello") }, // <<<
+>         },
+>     });
+>
+>     const lib = b.addLibrary(.{
+>         .linkage = .static,
+>         .name = "root",
+>         .root_module = root,
+>     });
+> ```
 
 Run the project:
 ```sh

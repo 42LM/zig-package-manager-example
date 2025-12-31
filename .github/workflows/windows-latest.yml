@@ -1,9 +1,0 @@
-name: windows-latest
-on: push
-
-jobs:
- windows-latest-build:
-   uses: ./.github/workflows/ci-os.yml
-   with:
-     os: windows-latest
-     zig-versions: '[ "0.14.0", "0.15.0-dev.56+d0911786c" ]'
